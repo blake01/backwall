@@ -53,8 +53,8 @@ Here's what you need to know to deploy backwall on your site:
 
 If you're already using Modernizr in your project, ensure that it's loaded before backwall and that your build includes 'bgsizecover' detection. Then use backwall.min.js instead of the standalone version in the code snippet above.
 
-If you're really keen on having your background images load as quickly as possible, consider [https://developers.google.com/speed/pagespeed/module/filter-js-inline?hl=en#operation](inlining) backwall for maximum performance.
+If you're really keen on having your background images load as quickly as possible, consider [inlining](https://developers.google.com/speed/pagespeed/module/filter-js-inline?hl=en#operation) backwall for maximum performance.
 
 ## Program flow
 Here's a quick diagram of how the program works:
-![Alt text](flowchart.png)
+![Flowchart for backwall](flowchart.png)
