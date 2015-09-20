@@ -36,7 +36,7 @@ Here's what you need to know to deploy backwall on your site:
 
 <body>
   ...
-  <script src="../backwall.standalone.min.js"></script>
+  <script src="backwall.standalone.min.js"></script>
   <script>
   new Backwall({
     imgLoRes: "background_200.jpg", // Optional
