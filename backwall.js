@@ -1,3 +1,5 @@
+/*! Backwall | MIT license: https://github.com/blake01/backwall/blob/master/LICENSE.txt !*/
+
 // Create an immediately invoked functional expression to wrap our code
 (function() {
 
@@ -6,8 +8,8 @@
 
     // Define option defaults
     var defaults = {
-      hiResWidthPx: 1080,
-      fadeTimeSecs: 0.6
+      hiResThreshPx: 1080,
+      fadeTimeSecs: 0.5
     }
 
     // Create options by extending defaults with the passed in arguments
@@ -16,24 +18,21 @@
       options = extendDefaults(defaults, arguments[0]);
     }
     
+    // If the browser doesn't support background-size: cover, abort.
+    if (!Modernizr.bgsizecover) return
+    
     // PLUGIN CONTENT HERE       
-    document.body.style.backgroundImage = 'url("")'
-    makeBackground(options.imgLoRes, 0)
-    var dpr = 1
-    if (window.hasOwnProperty('devicePixelRatio')) dpr = window.devicePixelRatio
-    var screenMaxDimension = Math.max(screen.height, screen.width) * dpr
-    console.log('Maximum number of pixels across window: ' + screenMaxDimension)
-    if (options.hasOwnProperty('imgMidRes') && options.hasOwnProperty('imgHiRes')) {
-      if (screenMaxDimension < options.hiResWidthPx) {
-        makeBackground(options.imgMidRes, 1)
-      } else {
+    if (options.hasOwnProperty('imgLoRes')) makeBackground(options.imgLoRes, 0)
+    if (options.hasOwnProperty('imgHiRes')) {
+      var dpr = 1
+      if (window.hasOwnProperty('devicePixelRatio')) dpr = window.devicePixelRatio
+      var screenMaxDimension = Math.max(screen.height, screen.width) * dpr
+      if (screenMaxDimension >= options.hiResThreshPx) {
         makeBackground(options.imgHiRes, 1)
+        return
       }
-    } else if (options.hasOwnProperty('imgMidRes')) {
-      makeBackground(options.imgMidRes, 1)
-    } else if (options.hasOwnProperty('imgHiRes')) {
-      makeBackground(options.imgHiRes, 1)
-    }
+    } 
+    makeBackground(options.imgMidRes, 1)
     
     // Define factory function to inject DOM elements with Cover backgrounds
     function makeBackground(url, i) {
@@ -48,6 +47,7 @@
       // Start the image loading
       img.src = url;
       // Meanwhile, style the DOM element and insert it into document.body
+      element.classList.add('backwall')
       element.style.backgroundSize = 'cover'
       element.style.display = 'block'
       element.style.left = element.style.right = '0'
