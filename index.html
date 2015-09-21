@@ -3,6 +3,7 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
@@ -31,15 +32,11 @@
         <hr>
 
         <section id="main_content">
-          <h1>
-<a id="backwall" class="anchor" href="#backwall" aria-hidden="true"><span class="octicon octicon-link"></span></a>backwall</h1>
+<p>Lightweight pure-javascript plugin to add responsive, smooth-loading background images to a web page. For more info and demos, see the <a href="http://blake01.github.io/backwall/">github.io project website</a>.</p>
 
-<p>Lightweight pure-javascript plugin to add responsive, smooth-loading background images to a web page.</p>
+<h2><a id="user-content-why-use-backwall" class="anchor" href="#why-use-backwall" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why use backwall?</h2>
 
-<h2>
-<a id="why-use-backwall" class="anchor" href="#why-use-backwall" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why use backwall?</h2>
-
-<p>Full-page backgrounds are extremely popular on the web nowadays. However, developers have a few headaches whenever such backgrounds are required:</p>
+<p><a href="https://css-tricks.com/perfect-full-page-background-image/">Full-page backgrounds</a> are extremely popular on the web nowadays. However, developers have a few headaches whenever such backgrounds are required:</p>
 
 <ul>
 <li>How will the site look on legacy browsers that don't support background-size: cover?</li>
@@ -48,19 +45,18 @@
 <li>Is stuttery, pixel-row-by-pixel-row image loading acceptable on slow internet connections, regardless of the background image size?</li>
 </ul>
 
-<p>Enter backwall. Backwall is a pure-javascript plugin that magics away all of these problems. It allows you to:</p>
+<p>Enter <em>backwall</em>. <em>backwall</em> is an MIT licensed, dependency-free javascript plugin that magics away all of these problems in a progressive way. It allows you to:</p>
 
 <ul>
 <li>Detect browser support for background-size: cover using Modernizr and provide an appropriate fallback, e.g. a solid color background</li>
 <li>Detect the user's screen size and pixel ratio, and serve up a medium- or high-resolution background image</li>
 <li>For users with slow connections, serve up a low-resolution background image while the higher-resolution image loads</li>
-<li>Smoothly fade in background images when fully loaded using CSS3 transitions for modern browsers.</li>
+<li>Smoothly fade in background images when fully loaded using CSS3 transitions when the browser supports them</li>
 </ul>
 
-<h2>
-<a id="get-me-started" class="anchor" href="#get-me-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get me started!</h2>
+<h2><a id="user-content-get-me-started" class="anchor" href="#get-me-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get me started!</h2>
 
-<p>Here's what you need to know to deploy backwall on your site:</p>
+<p>Here's what you need to know to deploy <em>backwall</em> on your site:</p>
 
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -94,24 +90,74 @@
 &lt;/html&gt;
 </code></pre>
 
-<p>If you're already using Modernizr in your project, ensure that it's loaded before backwall and that your build includes 'bgsizecover' detection. Then use backwall.min.js instead of the standalone version in the code snippet above.</p>
+<p>If you're already using Modernizr in your project, ensure that it's loaded before <em>backwall</em> and that your build includes 'bgsizecover' detection. Then use backwall.min.js instead of the standalone version in the code snippet above.</p>
 
-<p>If you're really keen on having your background images load as quickly as possible, consider <a href="https://developers.google.com/speed/pagespeed/module/filter-js-inline?hl=en#operation">inlining</a> backwall for maximum performance.</p>
+<p>If you're really keen on having your background images load as quickly as possible, consider <a href="https://developers.google.com/speed/pagespeed/module/filter-js-inline?hl=en#operation">inlining</a> <em>backwall</em> for maximum performance.</p>
 
-<h2>
-<a id="program-flow" class="anchor" href="#program-flow" aria-hidden="true"><span class="octicon octicon-link"></span></a>Program flow</h2>
+<h2><a id="user-content-api" class="anchor" href="#api" aria-hidden="true"><span class="octicon octicon-link"></span></a>API</h2>
 
-<p>Here's a quick diagram of how the program works:
-<img src="flowchart.png" alt="Flowchart for backwall"></p>
+<h3><a id="user-content-options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h3>
+
+<p><em>backwall</em> takes a number of optional parameters and one compulsory parameter.</p>
+
+<p><strong>imgLoRes</strong></p>
+
+<ul>
+<li><em>Type</em>: Optional, no default</li>
+<li><em>Description</em>: Filepath to a low-resolution background image that can load quickly and provide a placeholder until a higher-resolution image is done loading</li>
+</ul>
+
+<p><strong>imgMidRes</strong></p>
+
+<ul>
+<li><em>Type</em>: Compulsory</li>
+<li><em>Description</em>: Filepath to an image that will load on top of imgLoRes (if specified) if no imgHiRes is specified, or the user's available screen pixels (screen width * pixel ratio) value is below hiResThreshPx</li>
+</ul>
+
+<p><strong>imgHiRes</strong></p>
+
+<ul>
+<li><em>Type</em>: Optional, no default</li>
+<li><em>Description</em>: Filepath to an image that will load on top of imgLoRes (if specified) if the user's available screen pixels value is equal to or above hiResThreshPx</li>
+</ul>
+
+<p><strong>hiResThreshPx</strong></p>
+
+<ul>
+<li><em>Type</em>: Optional, default = 1080</li>
+<li><em>Description</em>: The cutoff point at which <em>backwall</em> decides to load imgMidRes or imgHiRes (see above)</li>
+</ul>
+
+<p><strong>fadeTimeSecs</strong></p>
+
+<ul>
+<li><em>Type</em>: Optional, default = 0.5</li>
+<li><em>Description</em>: The cross-fade transition time from 0% to 100% opacity when each image loads. Will effectively be 0 on browsers that do not support CSS3 transitions.</li>
+</ul>
+
+<h3><a id="user-content-callbacks" class="anchor" href="#callbacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Callbacks</h3>
+
+<p>None yet. Future enhancements to include callbacks when images have loaded.</p>
         </section>
 
         <footer>
           Backwall is maintained by <a href="https://github.com/blake01">blake01</a><br>
           This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
         </footer>
-
         
       </div>
     </div>
+    
+    <script src="javascripts/backwall.standalone.min.js"></script>
+    <script>
+    new Backwall({
+      imgLoRes: "images/400.jpg",
+      imgMidRes: "images/1080.jpg",
+      imgHiRes: "images/2160.jpg",
+      hiResThreshPx: 1200,
+      fadeTimeSecs: 0.4
+    });
+    </script>
+
   </body>
 </html>
