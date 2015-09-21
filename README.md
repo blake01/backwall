@@ -1,5 +1,5 @@
 # backwall
-Lightweight pure-javascript plugin to add responsive, smooth-loading background images to a web page. For more info and demos, see the [github.io project website](http://blake01.github.io/backwall/)
+Lightweight pure-javascript plugin to add responsive, smooth-loading background images to a web page. For more info and demos, see the [github.io project website](http://blake01.github.io/backwall/).
 
 ## Why use backwall?
 [Full-page backgrounds](https://css-tricks.com/perfect-full-page-background-image/) are extremely popular on the web nowadays. However, developers have a few headaches whenever such backgrounds are required:
