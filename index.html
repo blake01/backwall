@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Backwall by blake01</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Backwall</h1>
+          <h2>Lightweight pure-javascript plugin to add responsive, smooth-loading background images to a web page.</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/blake01/backwall/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/blake01/backwall/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/blake01/backwall" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a id="backwall" class="anchor" href="#backwall" aria-hidden="true"><span class="octicon octicon-link"></span></a>backwall</h1>
+
+<p>Lightweight pure-javascript plugin to add responsive, smooth-loading background images to a web page.</p>
+
+<h2>
+<a id="why-use-backwall" class="anchor" href="#why-use-backwall" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why use backwall?</h2>
+
+<p>Full-page backgrounds are extremely popular on the web nowadays. However, developers have a few headaches whenever such backgrounds are required:</p>
+
+<ul>
+<li>How will the site look on legacy browsers that don't support background-size: cover?</li>
+<li>If the background image resolution is small, is it acceptable for users of large screens to see a poor-quality image?</li>
+<li>Conversely, if the background image resolution is large, is it acceptable to force users on small screens to download and wait for an unnecessarily large file?</li>
+<li>Is stuttery, pixel-row-by-pixel-row image loading acceptable on slow internet connections, regardless of the background image size?</li>
+</ul>
+
+<p>Enter backwall. Backwall is a pure-javascript plugin that magics away all of these problems. It allows you to:</p>
+
+<ul>
+<li>Detect browser support for background-size: cover using Modernizr and provide an appropriate fallback, e.g. a solid color background</li>
+<li>Detect the user's screen size and pixel ratio, and serve up a medium- or high-resolution background image</li>
+<li>For users with slow connections, serve up a low-resolution background image while the higher-resolution image loads</li>
+<li>Smoothly fade in background images when fully loaded using CSS3 transitions for modern browsers.</li>
+</ul>
+
+<h2>
+<a id="get-me-started" class="anchor" href="#get-me-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get me started!</h2>
+
+<p>Here's what you need to know to deploy backwall on your site:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  ...
+    &lt;style&gt;
+    body, html {
+      min-height: 100%;
+    }
+    html {
+      // Define a fallback full-page background here
+      background-color: black;
+    }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  ...
+  &lt;script src="backwall.standalone.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
+  new Backwall({
+    imgLoRes: "background_200.jpg", // Optional
+    imgMidRes: "background_810.jpg",
+    imgHiRes: "background_1620.jpg", // Optional
+    hiResThreshPx: 1080, // Optional
+    fadeTimeSecs: 0.4  // Optional
+  });
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>If you're already using Modernizr in your project, ensure that it's loaded before backwall and that your build includes 'bgsizecover' detection. Then use backwall.min.js instead of the standalone version in the code snippet above.</p>
+
+<p>If you're really keen on having your background images load as quickly as possible, consider <a href="https://developers.google.com/speed/pagespeed/module/filter-js-inline?hl=en#operation">inlining</a> backwall for maximum performance.</p>
+
+<h2>
+<a id="program-flow" class="anchor" href="#program-flow" aria-hidden="true"><span class="octicon octicon-link"></span></a>Program flow</h2>
+
+<p>Here's a quick diagram of how the program works:
+<img src="flowchart.png" alt="Flowchart for backwall"></p>
+        </section>
+
+        <footer>
+          Backwall is maintained by <a href="https://github.com/blake01">blake01</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
