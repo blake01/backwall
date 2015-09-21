@@ -49,6 +49,9 @@
       // Meanwhile, style the DOM element and insert it into document.body
       element.classList.add('backwall')
       element.style.backgroundSize = 'cover'
+      element.style.backgroundRepeat = 'no-repeat'
+      element.style.backgroundPosition = 'center'
+      element.style.backgroundAttachment = 'fixed'
       element.style.display = 'block'
       element.style.left = element.style.right = '0'
       element.style.top = element.style.bottom = '0'

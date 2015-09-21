@@ -2,17 +2,17 @@
 Lightweight pure-javascript plugin to add responsive, smooth-loading background images to a web page.
 
 ## Why use backwall?
-Full-page backgrounds are extremely popular on the web nowadays. However, developers have a few headaches whenever such backgrounds are required:
+[Full-page backgrounds](https://css-tricks.com/perfect-full-page-background-image/) are extremely popular on the web nowadays. However, developers have a few headaches whenever such backgrounds are required:
 - How will the site look on legacy browsers that don't support background-size: cover?
 - If the background image resolution is small, is it acceptable for users of large screens to see a poor-quality image?
 - Conversely, if the background image resolution is large, is it acceptable to force users on small screens to download and wait for an unnecessarily large file?
 - Is stuttery, pixel-row-by-pixel-row image loading acceptable on slow internet connections, regardless of the background image size?
 
-Enter *backwall*. *backwall* is an MIT licensed, dependency-free javascript plugin that magics away all of these problems. It allows you to:
+Enter *backwall*. *backwall* is an MIT licensed, dependency-free javascript plugin that magics away all of these problems in a progressive way. It allows you to:
 - Detect browser support for background-size: cover using Modernizr and provide an appropriate fallback, e.g. a solid color background
 - Detect the user's screen size and pixel ratio, and serve up a medium- or high-resolution background image
 - For users with slow connections, serve up a low-resolution background image while the higher-resolution image loads
-- Smoothly fade in background images when fully loaded using CSS3 transitions for modern browsers
+- Smoothly fade in background images when fully loaded using CSS3 transitions when the browser supports them
 
 ## Get me started! 
 
@@ -59,7 +59,7 @@ If you're really keen on having your background images load as quickly as possib
 
 ### Options
 
-Backwall takes a number of optional parameters and one compulsory parameter.
+*backwall* takes a number of optional parameters and one compulsory parameter.
 
 **imgLoRes**
 - *Type*: Optional, no default
@@ -79,7 +79,7 @@ Backwall takes a number of optional parameters and one compulsory parameter.
 
 **fadeTimeSecs**
 - *Type*: Optional, default = 0.5
-- **Description**: The cross-fade transition time from 0% to 100% opacity when each image loads
+- *Description*: The cross-fade transition time from 0% to 100% opacity when each image loads. Will effectively be 0 on browsers that do not support CSS3 transitions.
 
 ### Callbacks
 
