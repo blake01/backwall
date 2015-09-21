@@ -1,5 +1,5 @@
 # backwall
-Lightweight pure-javascript plugin to add responsive, smooth-loading background images to a web page.
+Lightweight pure-javascript plugin to add responsive, smooth-loading background images to a web page. For more info and demos, see the [github.io project website](http://blake01.github.io/backwall/)
 
 ## Why use backwall?
 [Full-page backgrounds](https://css-tricks.com/perfect-full-page-background-image/) are extremely popular on the web nowadays. However, developers have a few headaches whenever such backgrounds are required:
@@ -67,7 +67,7 @@ If you're really keen on having your background images load as quickly as possib
 
 **imgMidRes**
 - *Type*: Compulsory
-- **Description**: Filepath to an image that will load on top of imgLoRes (if specified) if no imgHiRes is specified, or the user's available screen pixels (screen width * pixel ratio) value is below hiResThreshPx
+- *Description*: Filepath to an image that will load on top of imgLoRes (if specified) if no imgHiRes is specified, or the user's available screen pixels (screen width * pixel ratio) value is below hiResThreshPx
 
 **imgHiRes**
 - *Type*: Optional, no default
