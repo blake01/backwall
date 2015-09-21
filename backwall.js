@@ -51,7 +51,6 @@
       element.style.backgroundSize = 'cover'
       element.style.backgroundRepeat = 'no-repeat'
       element.style.backgroundPosition = 'center'
-      element.style.backgroundAttachment = 'fixed'
       element.style.display = 'block'
       element.style.left = element.style.right = '0'
       element.style.top = element.style.bottom = '0'
